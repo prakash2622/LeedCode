@@ -1,0 +1,19 @@
+//Given a string s, find the length of the longest substring without repeating characters.
+//Input: s = "abcabcbb"
+//Output: 3
+//Explanation: The answer is "abc", with the length of 3.
+
+ public int lengthOfLongestSubstring(String s) {
+        int length = 0;
+		HashSet<Character> set = new HashSet<>();
+		for (int i = 0, j = 0; j < s.length();) {
+			if (set.contains(s.charAt(j))) {  
+				set.remove(s.charAt(i));
+				i++; 
+			} else {
+				set.add(s.charAt(j));
+				length = Math.max(length, set.size());
+				j++;
+			}
+		}
+       return length;
